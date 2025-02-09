@@ -1,31 +1,47 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "cybervinyl",
+  "version": "0.1.0",
   "type": "module",
+  "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@types/pg": "^8.11.11",
+    "better-auth": "^1.1.16",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.30.4",
+    "drizzle-orm": "^0.39.2",
+    "lucide-react": "^0.475.0",
+    "next": "15.1.6",
+    "pg": "^8.13.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^2.0.0",
-    "@nuxt/eslint": "^1.0.1",
-    "@nuxt/ui": "2.21.0",
-    "@pinia/nuxt": "^0.9.0",
+    "@eslint/eslintrc": "^3",
+    "@eslint/js": "^9.20.0",
+    "@next/eslint-plugin-next": "^15.1.6",
+    "@types/bun": "^1.2.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "eslint": "^9.20.0",
+    "eslint-config-next": "15.1.6",
     "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-vue": "^9.32.0",
-    "nuxt": "^3.15.4",
-    "prettier": "^3.4.2",
-    "typescript": "^5.7.3",
-    "vue": "^3.5.13"
-  },
-  "trustedDependencies": [
-    "@parcel/watcher",
-    "esbuild",
-    "vue-demi"
-  ]
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5"
+  }
 }

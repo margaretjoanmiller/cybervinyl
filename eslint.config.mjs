@@ -1,14 +1,15 @@
-import withNuxt from "./.nuxt/eslint.config.mjs";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { FlatCompat } from "@eslint/eslintrc";
 import eslintConfigPrettier from "eslint-config-prettier";
 
-export default withNuxt([eslintConfigPrettier]);
-// your custom flat configs go here, for example:
-// {
-//   files: ['**/*.ts', '**/*.tsx'],
-//   rules: {
-//     'no-console': 'off' // allow console.log in TypeScript files
-//   }
-// },
-// {
-//   ...
-// }
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+const eslintConfig = [...compat.extends("next"), eslintConfigPrettier];
+
+export default eslintConfig;
