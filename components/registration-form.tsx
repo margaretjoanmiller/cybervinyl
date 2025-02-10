@@ -15,8 +15,12 @@ import { auth } from '@/lib/auth';
 const login = async (formData) => {
     'use server';
     try {
-        await auth.api.signInEmail({
+        if (formData.get('password') !== formData.get('confirm')) {
+            throw new Error('Passwords do not match');
+        }
+        await auth.api.signUpEmail({
             body: {
+                name: formData.get('name'),
                 email: formData.get('email'),
                 password: formData.get('password'),
             },
@@ -26,7 +30,7 @@ const login = async (formData) => {
     }
 };
 
-export function LoginForm({
+export function RegistrationForm({
     className,
     ...props
 }: React.ComponentProps<'div'>) {
@@ -34,7 +38,7 @@ export function LoginForm({
         <div className={cn('flex flex-col gap-6', className)} {...props}>
             <Card>
                 <CardHeader>
-                    <CardTitle>Login to your account</CardTitle>
+                    <CardTitle>Create your account</CardTitle>
                     <CardDescription>
                         Enter your email below to login to your account
                     </CardDescription>
@@ -43,9 +47,18 @@ export function LoginForm({
                     <form action={login}>
                         <div className="flex flex-col gap-6">
                             <div className="grid gap-3">
+                                <Label htmlFor="email">Name or nickname</Label>
+                                <Input
+                                    name="name"
+                                    type="name"
+                                    placeholder="Doc Emmet Brown"
+                                    required
+                                />
+                            </div>
+                            <div className="grid gap-3">
                                 <Label htmlFor="email">Email</Label>
                                 <Input
-                                    id="email"
+                                    name="email"
                                     type="email"
                                     placeholder="m@example.com"
                                     required
@@ -54,21 +67,26 @@ export function LoginForm({
                             <div className="grid gap-3">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
-                                    <a
-                                        href="#"
-                                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                                    >
-                                        Forgot your password?
-                                    </a>
                                 </div>
-                                <Input id="password" type="password" required />
+                                <Input
+                                    name="password"
+                                    type="password"
+                                    required
+                                />
+                                <div className="flex items-center">
+                                    <Label htmlFor="password">
+                                        Confirm password
+                                    </Label>
+                                </div>
+                                <Input
+                                    name="confirm"
+                                    type="password"
+                                    required
+                                />
                             </div>
                             <div className="flex flex-col gap-3">
                                 <Button type="submit" className="w-full">
-                                    Login
-                                </Button>
-                                <Button variant="outline" className="w-full">
-                                    Login with Google
+                                    Sign up
                                 </Button>
                             </div>
                         </div>
