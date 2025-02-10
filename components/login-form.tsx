@@ -20,9 +20,6 @@ export function LoginForm({
             <Card>
                 <CardHeader>
                     <CardTitle>Login to your account</CardTitle>
-                    <CardDescription>
-                        Enter your email below to login to your account
-                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form
@@ -37,15 +34,6 @@ export function LoginForm({
                                     Login with Github
                                 </Button>
                             </div>
-                        </div>
-                        <div className="mt-4 text-center text-sm">
-                            Don&apos;t have an account?{' '}
-                            <a
-                                href="#"
-                                className="underline underline-offset-4"
-                            >
-                                Sign up
-                            </a>
                         </div>
                     </form>
                 </CardContent>
